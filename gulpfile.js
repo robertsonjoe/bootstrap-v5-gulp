@@ -3,11 +3,13 @@ const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-clean-css');
+const auotprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', () => {
   return gulp.src('./sass/*.scss')
-    .pipe(sass())
     .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(auotprefixer())
     .pipe(cleanCSS())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/'))
